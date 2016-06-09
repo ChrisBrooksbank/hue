@@ -1,10 +1,9 @@
-import sys
+import json
 import requests
 
-huebridgeaddress = "192.168.1.103"
-hueusername = "hS582W-AhSdUEE7Tfjll2xslcgFOTOEglDTOZTpA"
+config = json.loads(open('config.json', 'r').read())
 
-url = 'http://' + huebridgeaddress + '/api/' + hueusername + '/lights/'
+url = 'http://' + config['hue']['bridgeaddress']  + '/api/' + config['hue']['bridgeusername'] + '/lights/'
 response = requests.get(url)
 
 lightsJSON = response.json()
